@@ -1746,4 +1746,36 @@ typedef NS_ENUM(NSInteger, TOCropViewOverlayEdge) {
     return (self.aspectRatio.width > FLT_EPSILON && self.aspectRatio.height > FLT_EPSILON);
 }
 
+- (void)updateImage:(UIImage *)image {
+    if (!image) {
+        return;
+    }
+
+    // Store current crop settings
+    CGRect cropFrame = self.imageCropFrame;
+    NSInteger angle = self.angle;
+    
+    // Update image views
+    self.backgroundImageView.image = image;
+    self.foregroundImageView.image = image;
+    
+    // Update image property
+    _image = image;
+    
+    // Restore crop settings
+    self.imageCropFrame = cropFrame;
+    self.angle = angle;
+    
+    [self checkForCanReset];
+    [self setNeedsLayout];
+}
+
+- (void)setImage:(UIImage *)image {
+    if (image == _image) {
+        return;
+    }
+    
+    [self updateImage:image];
+}
+
 @end

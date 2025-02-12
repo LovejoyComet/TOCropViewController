@@ -26,6 +26,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (TOCropRotate)
 
+/// The original image that will be cropped
+@property (nonatomic, strong) UIImage *sourceImage;
+
+/// Updates the source image while maintaining crop settings
+- (void)updateSourceImage:(UIImage *)newImage;
+
 /// Crops a portion of an existing image object and returns it as a new image
 /// @param frame The region inside the image (In image pixel space) to crop
 /// @param angle If any, the angle the image is rotated at as well

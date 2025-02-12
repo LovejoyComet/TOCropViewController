@@ -43,9 +43,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TOCropView : UIView
 
 /**
- The image that the crop view is displaying. This cannot be changed once the crop view is instantiated.
+ The image that the crop view is displaying (Bindable)
  */
-@property (nonnull, nonatomic, strong, readonly) UIImage *image;
+@property (nonatomic, strong) UIImage *image;
+
+/**
+ Updates the displayed image while maintaining crop settings
+ */
+- (void)updateImage:(UIImage *)image;
 
 /**
  The cropping style of the crop view (eg, rectangular or circular)

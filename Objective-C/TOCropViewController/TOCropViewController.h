@@ -365,6 +365,11 @@
  */
 @property (nullable, nonatomic, strong) void (^onDidCropToCircleImage)(UIImage* _Nonnull image, CGRect cropRect, NSInteger angle);
 
+/// The image being cropped (Bindable)
+@property (nonatomic, strong) UIImage *image;
+
+/// Updates the source image while maintaining current crop settings
+- (void)updateImage:(UIImage *)image;
 
 ///------------------------------------------------
 /// @name Object Creation
